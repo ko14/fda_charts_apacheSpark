@@ -4,7 +4,7 @@ This repo uses the entire FDA NDC drug file to process certain metrics using a n
 
 In order to see the charts, you simply download the html file to your local computer.  The html file pulls the data directly from this repo, leveraging Google's Chart API to render the charts.
 
-The "mostchange" metric is comparing the prior 12 month period (i.e., two years ago) to this past 12 month period to determine the percentage change.  The high percentage results are largely due to the small numbers for certain labelers/ingredients/pharm classes (ex. a labeler goes from 2 drugs in one year to 10 in the next year).   
+The "mostchange" metric is comparing those drugs with a marketing start date of the last 12 months compared with the 12 month period before that. The high percentage results are largely due to the small numbers for certain labelers/ingredients/pharm classes (ex. a labeler goes from 2 drugs in one year to 10 in the next year).   
 
 In the notebook I restrict the metrics to product_types "Human Prescription Drug' and "Human OTC Drug", but there are other less populated types.  Also, because I'm using Athena's Spark engine, the pandasDF.to_json doesn't write to S3, so I use boto's S3.put_object, but if you're in a different environment you can use the native pandas to_json.
 
