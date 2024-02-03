@@ -14,24 +14,6 @@
     <script>    
     
       function createchart(responseString,urlString){
-        jData = JSON.parse(responseString);
-
-        urlArray = urlString.split("/");
-        sourceDataTitle = urlArray[urlArray.length-1].substring(0,urlArray[urlArray.length-1].length-5); 
-        
-        sourceDataArray = sourceDataTitle.split("_");
-        
-        if (sourceDataArray[sourceDataArray.length-1] == "labelers")
-        {barcolor = "#8A0808";}
-        else if (sourceDataArray[sourceDataArray.length-1] == "ingredients")
-        {barcolor = "#000000";}
-        else if (sourceDataArray[sourceDataArray.length-1] == "pharmclass")
-        {barcolor = "#ffffff";}
-                
-        var chart_data = [["Name","Calc", {role: "style"}]];
-        for (i in jData) {
-          chart_data.push([jData[i].name,jData[i].calc,barcolor]);
-        }            
         
         google.charts.load('current', {packages: ['corechart']});    
         google.charts.setOnLoadCallback(drawChart);
@@ -42,7 +24,7 @@
            urlArray = urlString.split("/");
            sourceDataTitle = urlArray[urlArray.length-1].substring(0,urlArray[urlArray.length-1].length-5);            
            
-	         sourceDataArray = sourceDataTitle.split("_");
+	   sourceDataArray = sourceDataTitle.split("_");
 
            if (sourceDataArray[sourceDataArray.length-1] == "labelers")
            {barcolor = "#8A0808";}
@@ -94,10 +76,10 @@
      
       ////////////  kicks off chart loading /////////////////
      
-      var sourceData = ["human_prescription_drug_top_labelers","human_prescription_drug_top_ingredients","human_prescription_drug_top_pharmclass"];
-      sourceData.push ("human_prescription_drug_mostchange_labelers","human_prescription_drug_mostchange_ingredients","human_prescription_drug_mostchange_pharmclass");
-      sourceData.push ("human_otc_drug_top_labelers","human_otc_drug_top_ingredients","human_otc_drug_top_pharmclass"); 
-      sourceData.push ("human_otc_drug_mostchange_labelers","human_otc_drug_mostchange_ingredients","human_otc_drug_mostchange_pharmclass"); 
+      var sourceData = ["human_prescription_drug_top_labelers","human_prescription_drug_top_ingredients","human_prescription_drug_top_pharmclass", 
+      			"human_prescription_drug_mostchange_labelers","human_prescription_drug_mostchange_ingredients","human_prescription_drug_mostchange_pharmclass",
+     			"human_otc_drug_top_labelers","human_otc_drug_top_ingredients","human_otc_drug_top_pharmclass", 
+      			"human_otc_drug_mostchange_labelers","human_otc_drug_mostchange_ingredients","human_otc_drug_mostchange_pharmclass"]; 
       
       for (i in sourceData){
         
